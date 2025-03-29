@@ -3,7 +3,7 @@ var pc, pc_CostaM, pc_DireitaM, pc_EsquerdaM, pc_FrenteM, pc_CostaP, pc_DireitaP
 
 //variavel botoes
 var buttonCheckPointImage, buttonSomImage1;
-var buttonComecar
+var buttonComecar, tente_novamente
 var buttonSom1, buttonBemtiviImage;
 var buttonSom2, buttonSiriemaImage;
 var buttonSom3, buttonAnuBrancoImage;
@@ -66,11 +66,11 @@ function preload() {
   picapauSound=loadSound('./sons/picapau.mp3')
   sad_sound = loadSound("./sons/sad.wav");
   background_sound=loadSound("./sons/background_music.mp3")
+ 
 
   //botões
   buttonSomImage1=loadAnimation("./sinalizadores/button_sound.png")
   buttonCheckPointImage=loadAnimation("./sinalizadores/checkPoint.png")
-
   buttonBemtiviImage=loadAnimation("./passaros/Bemtivi.png")
   buttonAnuBrancoImage =loadAnimation("./passaros/anubranco.png")
   buttonBeijaFlorImage =loadAnimation("./passaros/beija_flor.png")
@@ -139,6 +139,9 @@ function setup() {
  pc.scale=1
 
  edges= createEdgeSprites();
+ tente_novamente = createImg('./cenas/tente_novemente.png')
+ tente_novamente.position(265,200);
+ tente_novamente.size(180,20);  
 
  text1 = createElement("h1");
  text1.html("METVIB");
@@ -150,7 +153,7 @@ function setup() {
  textDica1.position(70, 130)
  textDica1.class("greeting2");
 
- access1 = createInput("Digite o nome do pássaro")
+ access1 = createInput("")
  access1.position(70,200);
  access1.style('background', 'white');  
  access1.class("input")
@@ -249,8 +252,9 @@ function draw()
   }
   if(cena === 2){
     background(backgroundImage2);
-    //background_sound.play()
-    //background_sound.setVolume(0.1)
+    textSize(15);
+    fill("white");
+    text("PONTUAÇÃO: " + score, 350, 50);
 
     pc.collide(edges);
     //escuta1 bem ti vi
@@ -369,13 +373,11 @@ if(habilitar5){
 }  
     
     if(score === 5) {
-      //menina sai andando pela direita ultrapassa a tela
-      //settime out
-      //muda para cena 2
+      
       setTimeout(() => {
         cena = 3
        
-      }, 5000);
+      }, 3000);
       
       
     }
@@ -398,7 +400,7 @@ if(habilitar5){
     setTimeout(() => {
       cena =4
       
-    }, 10000);
+    }, 5000);
       
   }
   
@@ -418,48 +420,54 @@ if(habilitar5){
    if(keyWentDown(UP_ARROW)){
     pc.velocityY=-2
     pc.changeAnimation("costa")
+   
     //pc.scale=0.222
    }
    else if (keyWentUp(UP_ARROW)){
     pc.velocityY=0
     pc.changeAnimation("pc_CostaP")
+   
    }
    if(keyWentDown(DOWN_ARROW)){
     pc.velocityY=2
     //pc.scale=0.4
     pc.changeAnimation("frente")
+    
    }
    else if (keyWentUp(DOWN_ARROW)){
     pc.velocityY=0
     pc.changeAnimation("pc_FrenteP")
+    
    }
    if(keyWentDown(LEFT_ARROW)){
     pc.velocityX=-2
     //pc.scale=0.4
     pc.changeAnimation("esquerda")
+    
    }
    else if (keyWentUp(LEFT_ARROW)){
     pc.velocityX=0
     pc.changeAnimation("pc_EsquerdaP")
+   
    }
    
    if(keyWentDown(RIGHT_ARROW)){
     pc.velocityX=2
     //pc.scale=0.4
     pc.changeAnimation("direita")
+    
    }
    else if (keyWentUp(RIGHT_ARROW)){
     pc.velocityX=0
     pc.changeAnimation("pc_DireitaP")
+   
    }
   }
 
-  textSize(15);
-  fill("white");
-  text("PONTUAÇÃO: " + score, 350, 50);
+  
   //comportamentos fora do estado de jogo
-  textSize(10);
-  text (mouseX + "," + mouseY, mouseX, mouseY)
+  //textSize(10);
+  //text (mouseX + "," + mouseY, mouseX, mouseY)
   drawSprites();
 }
 /*function acaobuttonGenerica(palavraChave,caixaChave, buttonSom,stringAnimation, pcx, pcy, t,d,a,b, habilitar, colidir, nextButton){
@@ -491,9 +499,11 @@ function acaobutton1()
     buttonSom1.scale = 0.2
     moved = true
     buttonSom2.visible = true
+    tente_novamente.hide()
   }
   else{
     sad_sound.play();
+    tente_novamente.show()
   }
     
 }
@@ -511,15 +521,17 @@ function acaobutton2()
     buttonSom2.scale = 0.2
     moved = true
     buttonSom3.visible = true
+    tente_novamente.hide()
   }else{
     sad_sound.play();
+    tente_novamente.show()
   }
     
 }
 
 function acaobutton3()
 {
-  if(authenticate(accessCode3[1],access3.value())||authenticate(accessCode3[2])){
+  if(authenticate(accessCode3[1],access3.value())||authenticate(accessCode3[2],access3.value())){
     buttonSom3.changeAnimation("anubranco")
     pc.x = 200
     pc.y = 530
@@ -530,8 +542,10 @@ function acaobutton3()
     buttonSom3.scale = 0.2
     moved = true
     buttonSom4.visible = true
+    tente_novamente.hide()
   }else{
     sad_sound.play();
+    tente_novamente.show()
   }
     
 }
@@ -549,8 +563,10 @@ function acaobutton4()
     buttonSom4.scale = 0.2
     moved = true
     buttonSom5.visible = true
+    tente_novamente.hide()
   }else{
     sad_sound.play();
+    tente_novamente.show()
   }
     
 }
@@ -570,8 +586,10 @@ function acaobutton5()
     buttonSom5.scale = 0.25
     moved = true
     //buttonSom5.visible = true
+    tente_novamente.hide()
   }else{
     sad_sound.play();
+    tente_novamente.show()
   }
     
 }
@@ -593,6 +611,7 @@ function esconderelementos(){
   text3.hide()
   text4.hide()
   text5.hide()
+  tente_novamente.hide()
 
   textDica1.hide()
   textDica2.hide()
