@@ -3,7 +3,7 @@ var pc, pc_CostaM, pc_DireitaM, pc_EsquerdaM, pc_FrenteM, pc_CostaP, pc_DireitaP
 
 //variavel botoes
 var buttonCheckPointImage, buttonSomImage1;
-var buttonComecar, tente_novamente
+var buttonComecar, tente_novamente;
 var buttonSom1, buttonBemtiviImage;
 var buttonSom2, buttonSiriemaImage;
 var buttonSom3, buttonAnuBrancoImage;
