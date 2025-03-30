@@ -479,8 +479,8 @@ if(habilitar5){
 
   
   //comportamentos fora do estado de jogo
-  textSize(10);
-  text (mouseX + "," + mouseY, mouseX, mouseY)
+  //textSize(10);
+  //text (mouseX + "," + mouseY, mouseX, mouseY)
   drawSprites();
 }
 /*function acaobuttonGenerica(palavraChave,caixaChave, buttonSom,stringAnimation, pcx, pcy, t,d,a,b, habilitar, colidir, nextButton){
