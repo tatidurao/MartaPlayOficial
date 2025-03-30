@@ -32,8 +32,8 @@ var colidir4= true;
 var colidir5= true;
 var colidir6= true;
 var score=0;
-const accessCode1 = {1:"BEMTIVI", 2:"BEM TI VI", 3:"BEM-TI-VI"}
-const accessCode2 = "SIRIEMA"
+const accessCode1 = {1:"BEMTEVI", 2:"BEM TE VI", 3:"BEM-TE-VI",4:"BEMTIVI"}
+const accessCode2 = {1:"SIRIEMA",2:"SERIEMA"}
 const accessCode3 = {1:"ANU BRANCO", 2:"ANUBRANCO"}
 const accessCode4 = "JACUPEMBA"
 const accessCode5 = {1:"PICAPAU", 2:"PICA-PAU",3:"PICA PAU"}
@@ -93,6 +93,8 @@ function setup() {
  buttonSom1.changeAnimation("checkPoint")
  buttonSom1.visible=false
  buttonSom1.scale = 0.08
+ //buttonSom1.debug = true
+ buttonSom1.setCollider("rectangle",-660,0,1200, 100);
 
  buttonSom2=createSprite(75,480)
  buttonSom2.addAnimation("checkPoint", buttonCheckPointImage)
@@ -101,6 +103,7 @@ function setup() {
  buttonSom2.changeAnimation("checkPoint")
  buttonSom2.visible=false
  buttonSom2.scale = 0.08
+ //buttonSom2.debug = true
 
  buttonSom3=createSprite(330,540)
  buttonSom3.addAnimation("checkPoint", buttonCheckPointImage)
@@ -109,6 +112,8 @@ function setup() {
  buttonSom3.changeAnimation("checkPoint")
  buttonSom3.visible=false
  buttonSom3.scale = 0.08
+ //buttonSom3.debug = true
+ buttonSom3.setCollider("rectangle",0,0,1000, 800);
 
  buttonSom4=createSprite(440,380)
  buttonSom4.addAnimation("checkPoint", buttonCheckPointImage)
@@ -117,6 +122,8 @@ function setup() {
  buttonSom4.changeAnimation("checkPoint")
  buttonSom4.visible=false
  buttonSom4.scale = 0.08
+ //buttonSom4.debug = true
+ buttonSom4.setCollider("rectangle",-200,0,1000, 800);
 
  buttonSom5=createSprite(380,320)
  buttonSom5.addAnimation("checkPoint", buttonCheckPointImage)
@@ -125,8 +132,9 @@ function setup() {
  buttonSom5.changeAnimation("checkPoint")
  buttonSom5.visible=false
  buttonSom5.scale = 0.08
+
  //moviemnto
- pc = createSprite(50,325,20,30);
+ pc = createSprite(99,295,20,30);
  pc.addAnimation("costa",pc_CostaM)
  pc.addAnimation("direita",pc_DireitaM)
  pc.addAnimation("esquerda",pc_EsquerdaM)
@@ -144,7 +152,7 @@ function setup() {
  tente_novamente.size(180,20);  
 
  text1 = createElement("h1");
- text1.html("METVIB");
+ text1.html("MEETVIB");
  text1.position(70, 110)
  text1.class("greeting");
 
@@ -261,6 +269,7 @@ function draw()
     //colide só se var colidir 1 for true
     if(pc.collide(buttonSom1) && colidir1){
       buttonSom1.changeAnimation("soundImage")
+      buttonSom1.setCollider("rectangle",0,0,200, 100);
       habilitar1 = true //habilitar pressionamento do botão
       buttonSom1.scale = 0.4
       moved=false
@@ -285,13 +294,15 @@ function draw()
   //escuta 2 Siriema
     if(pc.collide(buttonSom2) && colidir2){
       buttonSom2.changeAnimation("soundImage")
+      buttonSom2.setCollider("rectangle",0,0,200, 200);
       habilitar2 = true //habilitar pressionamento do botão
       buttonSom2.scale = 0.4
       moved=false
       pc.changeAnimation("pc_FrenteP") //mudar animação
       pc.velocityX = 0
       pc.velocityY = 0
-      pc.x=pc.x-30
+      pc.x=30
+      pc.y=430
     }
     //pressionar apenas se o var habilitar 1 for true
     if(mousePressedOver(buttonSom2) && habilitar2){
@@ -308,6 +319,7 @@ function draw()
   //escuta 3
   if(pc.collide(buttonSom3) && colidir3){
     buttonSom3.changeAnimation("soundImage")
+    buttonSom3.setCollider("rectangle",0,0,200, 200);
     habilitar3 = true //habilitar pressionamento do botão
     buttonSom3.scale = 0.4
     moved=false
@@ -331,6 +343,7 @@ function draw()
 
   if(pc.collide(buttonSom4) && colidir4){
     buttonSom4.changeAnimation("soundImage")
+    buttonSom4.setCollider("rectangle",0,0,200, 200);
     habilitar4 = true //habilitar pressionamento do botão
     buttonSom4.scale = 0.4
     moved=false
@@ -400,7 +413,7 @@ if(habilitar5){
     setTimeout(() => {
       cena =4
       
-    }, 5000);
+    }, 7000);
       
   }
   
@@ -412,7 +425,7 @@ if(habilitar5){
     buttonSom3.visible =false
     buttonSom4.visible =false
     buttonSom5.visible =false
-    background_sound.stop()
+    //background_sound.stop()
     
   }
   //controles do jogador
@@ -466,8 +479,8 @@ if(habilitar5){
 
   
   //comportamentos fora do estado de jogo
-  //textSize(10);
-  //text (mouseX + "," + mouseY, mouseX, mouseY)
+  textSize(10);
+  text (mouseX + "," + mouseY, mouseX, mouseY)
   drawSprites();
 }
 /*function acaobuttonGenerica(palavraChave,caixaChave, buttonSom,stringAnimation, pcx, pcy, t,d,a,b, habilitar, colidir, nextButton){
@@ -488,10 +501,11 @@ if(habilitar5){
 }*/
 function acaobutton1()
 {
-  if(authenticate(accessCode1[1],access1.value())||authenticate(accessCode1[2],access1.value())||authenticate(accessCode1[3],access1.value())){
+  if(authenticate(accessCode1[1],access1.value())||authenticate(accessCode1[2],access1.value())||authenticate(accessCode1[3],access1.value())||authenticate(accessCode1[4],access1.value())){
     buttonSom1.changeAnimation("bemtivi")
-    pc.x = 190
-    pc.y = 450
+    buttonSom1.setCollider("rectangle",0,0,200, 400);
+    pc.x = 30
+    pc.y = 360
     esconderelementosIndividual(text1,textDica1,access1,button1)
     score++;
     habilitar1=false; //desabilitar clique
@@ -499,10 +513,12 @@ function acaobutton1()
     buttonSom1.scale = 0.2
     moved = true
     buttonSom2.visible = true
+    buttonSom2.setCollider("rectangle",0,-300,700, 800);
     tente_novamente.hide()
   }
   else{
-    sad_sound.play();
+    toqueSom(sad_sound)
+    //sad_sound.play();
     tente_novamente.show()
   }
     
@@ -510,8 +526,9 @@ function acaobutton1()
 
 function acaobutton2()
 {
-  if(authenticate(accessCode2,access2.value())){
+  if(authenticate(accessCode2[1],access2.value())||authenticate(accessCode2[2],access2.value())){
     buttonSom2.changeAnimation("siriema")
+    buttonSom2.setCollider("rectangle",0,0,200, 400);
     pc.x = 200
     pc.y = 530
     esconderelementosIndividual(text2,textDica2,access2,button2)
@@ -523,7 +540,8 @@ function acaobutton2()
     buttonSom3.visible = true
     tente_novamente.hide()
   }else{
-    sad_sound.play();
+    toqueSom(sad_sound)
+    //sad_sound.play();
     tente_novamente.show()
   }
     
@@ -533,8 +551,9 @@ function acaobutton3()
 {
   if(authenticate(accessCode3[1],access3.value())||authenticate(accessCode3[2],access3.value())){
     buttonSom3.changeAnimation("anubranco")
-    pc.x = 200
-    pc.y = 530
+    buttonSom3.setCollider("rectangle",0,0,400, 400);
+    pc.x = 360
+    pc.y = 450
     esconderelementosIndividual(text3,textDica3,access3,button3)
     score++;
     habilitar3=false; //desabilitar clique
@@ -544,7 +563,8 @@ function acaobutton3()
     buttonSom4.visible = true
     tente_novamente.hide()
   }else{
-    sad_sound.play();
+    toqueSom(sad_sound)
+    //sad_sound.play();
     tente_novamente.show()
   }
     
@@ -554,8 +574,9 @@ function acaobutton4()
 {
   if(authenticate(accessCode4,access4.value())){
     buttonSom4.changeAnimation("jacupemba")
-    pc.x = 270
-    pc.y = 400
+    buttonSom4.setCollider("rectangle",150,0,400, 400);
+    pc.x = 300
+    pc.y = 360
     esconderelementosIndividual(text4,textDica4,access4,button4)
     score++;
     habilitar4=false; //desabilitar clique
@@ -565,7 +586,8 @@ function acaobutton4()
     buttonSom5.visible = true
     tente_novamente.hide()
   }else{
-    sad_sound.play();
+    toqueSom(sad_sound)
+    //sad_sound.play();
     tente_novamente.show()
   }
     
@@ -575,6 +597,7 @@ function acaobutton5()
 {
   if(authenticate(accessCode5[1],access5.value())||authenticate(accessCode5[2],access5.value())||authenticate(accessCode5[3],access5.value())){
     buttonSom5.changeAnimation("picapau")
+    
     buttonSom5.x = 390
     buttonSom5.y = 210
     pc.x = 270
@@ -588,7 +611,8 @@ function acaobutton5()
     //buttonSom5.visible = true
     tente_novamente.hide()
   }else{
-    sad_sound.play();
+    toqueSom(sad_sound)
+    //sad_sound.play();
     tente_novamente.show()
   }
     
