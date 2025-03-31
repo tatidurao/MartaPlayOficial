@@ -482,8 +482,8 @@ if(habilitar5){
 
   
   //comportamentos fora do estado de jogo
-  textSize(10);
-  text (mouseX + "," + mouseY, mouseX, mouseY)
+  //textSize(10);
+  //text (mouseX + "," + mouseY, mouseX, mouseY)
   drawSprites();
 }
 /*function acaobuttonGenerica(palavraChave,caixaChave, buttonSom,stringAnimation, pcx, pcy, t,d,a,b, habilitar, colidir, nextButton){
@@ -680,3 +680,30 @@ function toqueSom(button){
   }
 }
 
+function windowResized() {
+  canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2); // Reajustar canvas ao redimensionar
+  text1.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
+  text2.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
+  text3.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
+  text4.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
+  text5.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
+
+  textDica1.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
+  textDica2.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
+  textDica3.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
+  textDica4.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
+  textDica5.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
+
+  access1.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
+  access2.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
+  access3.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
+  access4.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
+  access5.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
+
+  button1.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
+  button2.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
+  button3.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
+  button4.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
+  button5.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
+  
+}
