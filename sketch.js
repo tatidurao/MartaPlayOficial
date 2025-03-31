@@ -82,7 +82,8 @@ function preload() {
 }
 
 function setup() {
- createCanvas(500,600);
+ canvas = createCanvas(500,600);
+ canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
  buttonComecar=createSprite(415,550,50,50)
  buttonComecar.visible = false
 
@@ -153,93 +154,95 @@ function setup() {
 
  text1 = createElement("h1");
  text1.html("MEETVIB");
- text1.position(70, 110)
+ console.log(canvas.x + width/2 )
+ console.log(canvas.y + height / 2 )
+ text1.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
  text1.class("greeting");
 
  textDica1 = createElement("div");
  textDica1.html(`Dica: Sua barriga é amarela e seu canto é alto e onomatopaico.`);
- textDica1.position(70, 130)
+ textDica1.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
  textDica1.class("greeting2");
 
  access1 = createInput("")
- access1.position(70,200);
+ access1.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
  access1.style('background', 'white');  
  access1.class("input")
 
  button1 = createImg('./sinalizadores/check.png')
- button1.position(140,240);
+ button1.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
  button1.size(40,40);
 
  text2 = createElement("div");
  text2.html("EMASIRI");
- text2.position(70, 110)
+ text2.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
  text2.class("greeting");
 
  textDica2 = createElement("h2");
  textDica2.html(`Dica: Animal símbolo de Minas Gerais, </br>com pernas longas e pode ter até 1,35 m de altura.`);
- textDica2.position(70, 130)
+ textDica2.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
  textDica2.class("greeting2");
 
  access2  = createInput("")
- access2.position(70,200);
+ access2.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
  access2.style('background', 'white');  
 
  button2 = createImg('./sinalizadores/check.png')
- button2.position(140,240);
+ button2.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
  button2.size(50,50);
 
  text3 = createElement("h2");
  text3.html("ABRUNACON");
- text3.position(70, 110)
+ text3.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
  text3.class("greeting");
 
  textDica3 = createElement("div");
  textDica3.html("Dica: Possui uma crista alaranjada e sempre eriçada");
- textDica3.position(70, 130)
+ textDica3.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
  textDica3.class("greeting2");
 
  access3  = createInput("")
- access3.position(70,200);
+ access3.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
  access3.style('background', 'white');  
 
  button3 = createImg('./sinalizadores/check.png')
- button3.position(140,240);
+ button3.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
  button3.size(50,50);
 
  text4 = createElement("h2");
  text4.html("CAPUJEMBA");
- text4.position(70, 110)
+ text4.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
  text4.class("greeting");
 
  textDica4 = createElement("div");
  textDica4.html("Dica: O café produzido das sementes de suas fezes é o mais caro do mundo.");
- textDica4.position(70, 130)
+ textDica4.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
  textDica4.class("greeting2");
 
  access4  = createInput("")
- access4.position(70,200);
+ access4.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
  access4.style('background', 'white');  
 
  button4 = createImg('./sinalizadores/check.png')
- button4.position(140,240);
+ button4.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
  button4.size(50,50);
 
  text5 = createElement("h2");
  text5.html("PAUIPAC");
- text5.position(70, 110)
+ text5.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 190)
  text5.class("greeting");
 
  textDica5 = createElement("div");
  textDica5.html("Dica: Ator famoso, representado em um desenho muito assistido nos anos 90.");
- textDica5.position(70, 130)
+ textDica5.position(canvas.x + width / 2 - 180, canvas.y + height / 2 - 170)
  textDica5.class("greeting2");
 
  access5  = createInput("")
- access5.position(70,200);
+ access5.position(canvas.x + width / 2 - 180,canvas.y + height / 2 - 100);
  access5.style('background', 'white');  
 
  button5 = createImg('./sinalizadores/check.png')
- button5.position(140,240);
+ button5.position(canvas.x + width / 2 - 110,canvas.y + height / 2 - 60);
  button5.size(50,50);
  esconderelementos()
       
@@ -479,8 +482,8 @@ if(habilitar5){
 
   
   //comportamentos fora do estado de jogo
-  //textSize(10);
-  //text (mouseX + "," + mouseY, mouseX, mouseY)
+  textSize(10);
+  text (mouseX + "," + mouseY, mouseX, mouseY)
   drawSprites();
 }
 /*function acaobuttonGenerica(palavraChave,caixaChave, buttonSom,stringAnimation, pcx, pcy, t,d,a,b, habilitar, colidir, nextButton){
